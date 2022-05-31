@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+<form  (ngSubmit)="saveFood()">
+    <div class="form-group">
+        <input type="text" name="foodItem" 
+        [(ngModel)] = "food.foodItem" placeholder="Enter the Food Item Name"/>
+    </div>
+    <div class="form-group">  
+        <input type="text" name="price" 
+        [(ngModel)] = "food.price" placeholder="Enter the Price"/>
+    </div>
+    <div class="form-group">
+        <input type="text" name="category" 
+        [(ngModel)] = "food.category" placeholder="Enter the Category"/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" name="foodDescription" 
+        [(ngModel)] = "food.foodDescription" placeholder="Enter the Description"/>
+    </div>
+    <div class="form-group">
+        <input type="text" name="cuisine" 
+        [(ngModel)] = "food.cuisine" placeholder="Enter the Cuisine"/>
+    </div>
+    <div class="form-group">
+        <input type="file" name="image" 
+        [(ngModel)] = "food.foodImage" placeholder="Enter the Image"/>
+    </div>
+        <button type="submit" class="btn btn-primary">Add Food</button>
+        <button *ngIf="food.id" (click)="deleteFood(food.id)" class="btn btn-danger">Delete</button>
+        <!-- <button pButton type="button" label="Click" ></button> -->
+    
+</form>
+</div>
+</div>

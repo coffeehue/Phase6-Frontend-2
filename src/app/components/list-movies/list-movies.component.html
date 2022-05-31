@@ -1,0 +1,99 @@
+<!--  <a routerLink="/addmovie">Add Movie</a>
+<input type="text"
+    [(ngModel)]="filters.keyword"
+    name="keyword"
+    (input)="listMovies()">
+<select name="sortBy" 
+        [(ngModel)]="filters.sortBy" 
+        (change)="listMovies()">
+    <option>Name</option>
+    <option>Price</option>
+    <option>Genre</option>
+</select>
+
+<div class="grid">
+<div class="col-12 md:col-3" *ngFor="let movie of movies">
+    <h3>{{movie.moviename}}</h3>
+    <p>{{movie.price | currency:'INR'}}</p>
+    <p>{{movie.genre}}</p>
+    <img style="width: 250px; height: 250px;" [src]="'assets/sampleimage.jpg'" [alt]="movie.moviename"/>
+    <div>
+    <a routerLink="/editmovies/{{movie.id}}">Edit</a>
+    <button pButton type="button" (click)="deleteMovie(movie.id)">Delete</button>
+</div>
+</div> 
+</div> -->
+
+
+<div class="card">
+    <p-dataView #dv [value]="movies" [paginator]="true" [rows]="9" filterBy="name"
+        [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+        <ng-template pTemplate="header">
+            <a routerLink="/addmovie">Add Movie</a>
+            <input type="text"
+                [(ngModel)]="filters.keyword"
+                name="keyword"
+                (input)="listMovies()">
+            <select name="sortBy" 
+                    [(ngModel)]="filters.sortBy" 
+                    (change)="listMovies()">
+                <option>Name</option>
+                <option>Price</option>
+                <option>Genre</option>
+            </select>
+
+            <button style="left:1150px" (click)="logoutfunc()" class=" p-button-rounded" pButton routerLink="/login">Logout</button>
+  
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+                
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                
+            </div>
+        </ng-template>
+        <ng-template let-movie pTemplate="listItem" >
+            <div class="col-12">
+                <div class="product-list-item">
+                    <img [src]="'assets/sampleimage.jpg'" [alt]="movie.moviename"/>
+                    <div class="product-list-detail">
+                        <div class="product-name">{{movie.moviename}}</div>
+                        <div class="product-description">{{movie.showtime}}</div>
+                        <div class="product-description">{{movie.moviedate}}</div>
+                        <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{movie.genre}}</span>
+                    </div>
+                    <div class="product-list-action">
+                        <span class="product-price">{{movie.price | currency:'INR'}}</span>
+                        <!-- <p-button icon="pi pi-shopping-cart" label="" ></p-button> -->
+                        <a class=" p-button-rounded" pButton routerLink="/editmovies/{{movie.id}}">Edit</a>
+                    </div>
+                </div>
+            </div>
+            
+        </ng-template>
+        <ng-template let-movie pTemplate="gridItem" #gridI>
+            <div class="col-12 md:col-4">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-tag product-category-icon"></i>
+                            <span class="product-category">{{movie.genre}}</span>
+                        </div>
+                       
+                    </div>
+                    <div class="product-grid-item-content">
+                        <img style="height: 150px; width: auto;" [src]="'assets/sampleimage.jpg'"[alt]="movie.moviename"/>
+                        <div class="product-name">{{movie.moviename}}</div>
+                        <div class="product-description">{{movie.showtime}}</div>
+                        <div class="product-description">{{movie.moviedate}}</div>
+                        
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <span class="product-price">{{movie.price | currency:'INR'}}</span>
+                        <a class=" p-button-rounded" pButton routerLink="/editmovies/{{movie.id}}">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
+
+   

@@ -1,0 +1,70 @@
+<div class="card">
+    <p-dataView #dv [value]="food" [paginator]="true" [rows]="9" filterBy="name"
+        [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+        <ng-template pTemplate="header">
+            <a routerLink="/addfood">Add Food</a>
+            <input type="text"
+                [(ngModel)]="filters.keyword"
+                name="keyword"
+                (input)="listMovies()">
+            <select name="sortBy" 
+                    [(ngModel)]="filters.sortBy" 
+                    (change)="listMovies()">
+                <option>Name</option>
+                <option>Price</option>
+                <option>Cuisine</option>
+            </select>
+
+            <button style="left:1150px" (click)="logoutfunc()" class=" p-button-rounded" pButton routerLink="/login">Logout</button>
+  
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+                
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                
+            </div>
+        </ng-template>
+        <ng-template let-fooditem pTemplate="listItem" >
+            <div class="col-12">
+                <div class="product-list-item">
+                    <img src="assets/{{fooditem.foodItem}}.jpg" [alt]="fooditem.foodImage"/>
+                    <div class="product-list-detail">
+                        <div class="product-name">{{fooditem.foodItem}}</div>
+                        <div class="product-description">{{fooditem.foodDescription}}</div>
+                        <div class="product-description">{{fooditem.cuisine}}</div>
+                        <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{fooditem.category}}</span>
+                    </div>
+                    <div class="product-list-action">
+                        <span class="product-price">{{fooditem.price | currency:'INR'}}</span>
+                        <!-- <p-button icon="pi pi-shopping-cart" label="" ></p-button> -->
+                        <a class=" p-button-rounded" pButton routerLink="/editfood/{{fooditem.id}}">Edit</a>
+                    </div>
+                </div>
+            </div>
+            
+        </ng-template>
+        <ng-template let-fooditem pTemplate="gridItem" #gridI>
+            <div class="col-12 md:col-4">
+                <div class="product-grid-item card">
+                    <div class="product-grid-item-top">
+                        <div>
+                            <i class="pi pi-tag product-category-icon"></i>
+                            <span class="product-category">{{fooditem.category}}</span>
+                        </div>
+                       
+                    </div>
+                    <div class="product-grid-item-content">
+                        <img style="height: 150px; width: auto;" src="assets/{{fooditem.foodItem}}.jpg"  [alt]="fooditem.foodItem"/>
+                        <div class="product-name">{{fooditem.foodItem}}</div>
+                        <div class="product-description">{{fooditem.foodDescription}}</div>
+                        <div class="product-description">{{fooditem.cuisine}}</div>
+                        
+                    </div>
+                    <div class="product-grid-item-bottom">
+                        <span class="product-price">{{fooditem.price | currency:'INR'}}</span>
+                        <a class=" p-button-rounded" pButton routerLink="/editfood/{{fooditem.id}}">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>

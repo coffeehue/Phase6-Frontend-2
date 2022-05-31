@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+<form (ngSubmit)="saveUser()">
+    <div>
+    <div class="form-group"> 
+        <label for="userid">UserId</label>
+        <input type="text" name="userid" [(ngModel)] = "user.userId"/>
+    </div >
+    <div class="form-group" >
+        <label for="username">Username</label>
+        <input type="text" name="username" [(ngModel)] = "user.username" />
+    </div>
+   
+    <div class="form-group">
+        <label for="pwd">Password</label>
+        
+        <p-password [(ngModel)]="user.password" [toggleMask]="true"></p-password>
+    </div>
+
+    
+    <div class="form-group">
+        <label for="useremail">Email</label>
+        <input type="text" name="useremail" [(ngModel)] = "user.email"/>
+    </div>
+    <div class="form-group">
+        <label for="mno">Mobile No</label>
+        <input type="text" name="mno" [(ngModel)] = "user.phone_number"/>
+    </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </div>
+    
+</form>
+</div>
+</div>
+

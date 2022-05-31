@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+<form (ngSubmit)="saveMovie()">
+    <div class="form-group">
+        <input type="text" name="moviename" 
+        [(ngModel)] = "movie.moviename" placeholder="Enter the Movie Name"/>
+    </div>
+    <div class="form-group">  
+        <input type="text" name="price" 
+        [(ngModel)] = "movie.price" placeholder="Enter the Price"/>
+    </div>
+    <div class="form-group">
+        <input type="text" name="moviedate" 
+        [(ngModel)] = "movie.moviedate" placeholder="Enter the Movie Date"/>
+    </div>
+
+    <div class="form-group">
+        <input type="text" name="genre" 
+        [(ngModel)] = "movie.genre" placeholder="Enter the genre"/>
+    </div>
+    <div class="form-group">
+        <input type="text" name="time" 
+        [(ngModel)] = "movie.showtime" placeholder="Enter the Show Time"/>
+    </div>
+        <button type="submit" class="btn btn-primary">Add Movie</button>
+        <button *ngIf="movie.id" (click)="deleteMovie(movie.id)" class="btn btn-danger">Delete</button>
+        <!-- <button pButton type="button" label="Click" ></button> -->
+    
+</form>
+</div>
+</div>
